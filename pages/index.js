@@ -42,6 +42,9 @@ console.log(setText.value)
         <Link href="testeReact">
           <a>Teste React</a>
         </Link>
+        <Link href="fonteIcon">
+          <a>Font Awesome</a>
+        </Link>
         
       </main>
     </div>

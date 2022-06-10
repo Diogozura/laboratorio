@@ -2,6 +2,8 @@ import Image from 'next/image';
 import React from 'react';
 import styled from 'styled-components'
 import ToggleSwitch from '../components/ToggleSwitch';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faDoorClosed, faDoorOpen } from '@fortawesome/free-solid-svg-icons';
 
 export default function Toggle(props, child) {
     const [isChecked, setChecked] = React.useState(true)
@@ -14,7 +16,7 @@ export default function Toggle(props, child) {
 
     return (
         <PageWrapper>
-            <pre>{isChecked ?   <Image  src="./img/avatar/Vermelho.svg" width="500" height="500"/> :  <Image  src="./img/avatar/Azul.svg" width="500" height="500"/>}</pre>
+            <pre>{isChecked ?  <FontAwesomeIcon icon={faDoorClosed} className="fa-10x"/> :  <FontAwesomeIcon icon={faDoorOpen} className="fa-10x"/>}</pre>
             <ToggleSwitch isChecked={isChecked}  onClick={handleCheck}/>  
            
         </PageWrapper>
@@ -30,9 +32,3 @@ const PageWrapper = styled.div`
     height: 100vh;
     width: 100vw;
 `
-
-const color = () => {
-    return (
-              <Image  src="./img/avatar/Verde.svg" width="500" height="500"/>
-    )
-}

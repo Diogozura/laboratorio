@@ -5,20 +5,32 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function App() {
   const { data, error } = useSWR(
-    "https://ffgames134.herokuapp.com/api/dadosSala?keyRoom=UNYTWH1G&idPlayer=705",
-    fetcher,{ refreshInterval: 1000 }
+    "https://ffgames134.herokuapp.com/api/cores",
+    fetcher
   );
 
   if (error) return "An error has occurred.";
   if (!data) return "Loading...";
+  console.log(data.cores)
+  const cores = data.cores?.map((cor) => (
+    <>
+      <ul>
+        <li>{cor.identificadorHexadecimal}</li>
+        <li>{cor.identificador}</li>
+      </ul>
+    </>
+
+  )
+
+  )
   return (
     <div>
-      <h1>{data.namePlayer}</h1>
-      <p>{data.idPlayer}</p>
-      <strong>Valor inicial {data.valorInicial}</strong>{" "}
-      <strong>Saldo {data.saldo}</strong>{" "}
-      <strong>idPlayer {data.idPlayer}</strong>
-      <strong>keyRoom {data.keyRoom}</strong>
+      {cores}
+      <h1>{data.identificador}</h1>
+      <p>{data.identificadorHexadecimal}</p>
+      <strong>👁 {data.subscribers_count}</strong>{" "}
+      <strong>✨ {data.stargazers_count}</strong>{" "}
+      <strong>🍴 {data.forks_count}</strong>
     </div>
   );
 }

@@ -1,25 +1,7 @@
 import { useRouter } from "next/router";
 import react from "react"
 function Blog({ posts }) {
-  const [valor, setValor] = react.useState();
-
-
-  react.useEffect(() => {
-    // getStaticProps
-    async function API() {
-      const res = await fetch('https://ffgames134.herokuapp.com/api/dadosSala?keyRoom=UNYTWH1G&idPlayer=705')
-      const posts = await res.json()
-      console.log(posts.saldo)
-      setValor(posts.saldo)
-    }  
-   return API
-   
-  }, [])
-
- 
-  const router = useRouter()
-
-
+  
     return (
       <ul>
        
@@ -28,9 +10,7 @@ function Blog({ posts }) {
           <li key={posts.namePlayer}> Nome do Jogador: {posts.namePlayer}</li>
           <li key={posts.idPlayer}> Id do Jogador: {posts.idPlayer}</li>
           <li key={posts.playerBank}>é Banco? {posts.playerBank}</li>
-          <li key={posts.saldo}>Saldo: {posts.saldo}</li>
-          <li>{valor}</li>
-        <button type="button" onClick={() => router.reload()}>atualizar</button>
+          <li key={posts.saldo}>Saldo: {posts.saldo}</li> <button type="button" onClick={() => router.reload()}>atualizar</button>
       </ul>
     )
   }
