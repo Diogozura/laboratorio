@@ -2,9 +2,20 @@
 import Head from 'next/head'
 import Link from 'next/link';
 import React from 'react';
+import styled from 'styled-components';
 
 
+const Bloco = styled.main`
+  
+  display: grid;
+    margin: auto;
+    width: 700px;
+    justify-items: center;
 
+  @media only screen and (max-width: 900px)  {
+    width: 80%;
+  }
+`
 
 
 export default function Home() {
@@ -17,7 +28,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main >
+      <Bloco>
         <h1 >
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
@@ -47,7 +58,7 @@ export default function Home() {
           <a>tamo a falar de money</a>
         </Link>
         
-      </main>
+      </Bloco>
     </div>
   )
 }
