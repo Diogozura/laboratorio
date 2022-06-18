@@ -1,9 +1,6 @@
 import React from 'react';
  import { useFormik } from 'formik';
 
-
-
- 
  const SignupForm = () => {
    // Pass the useFormik() hook initial form values and a submit function that will
    // be called when the form is submitted
