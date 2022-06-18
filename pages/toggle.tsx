@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import React from 'react';
 import styled from 'styled-components'
-import ToggleSwitch from '../components/ToggleSwitch';
+import ToggleSwitch from '../src/components/ToggleSwitch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDoorClosed, faDoorOpen } from '@fortawesome/free-solid-svg-icons';
 
-export default function Toggle(props, child) {
+export default function Toggle() {
     const [isChecked, setChecked] = React.useState(true)
 
     console.log("is checked", isChecked)
