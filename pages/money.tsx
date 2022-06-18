@@ -75,6 +75,7 @@ export default function FormattedInputs() {
         }}
         variant="standard"
       />
+       <pre>{JSON.stringify(values, null, 2)}</pre>
     </Box>
   );
 }
