@@ -43,6 +43,9 @@ export default function Home() {
         <Link href="fonteIcon">
           <a>Font Awesome</a>
         </Link>
+        <Link href="money">
+          <a>tamo a falar de money</a>
+        </Link>
         
       </main>
     </div>
