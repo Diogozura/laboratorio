@@ -36,12 +36,6 @@ export default function Home() {
         <Link href='form'>
           <a>teste do form</a>
         </Link>
-        <Link href='formi1'>
-          <a>teste do form1</a>
-        </Link>
-        <Link href="form2">
-          <a>Form 2 com Input radio</a>
-        </Link>
         <Link href="testeISR">
           <a>Teste ISR</a>
         </Link>
