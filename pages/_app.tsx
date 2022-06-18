@@ -2,10 +2,10 @@ import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.css';
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
-import { Component } from 'react';
-config.autoAddCss = false
+import type { AppProps } from 'next/app'
 
-function MyApp({pageProps }) {
+
+function MyApp({ Component, pageProps }: AppProps) {
   return <>
     <Head>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" />
