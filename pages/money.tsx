@@ -3,12 +3,17 @@ import NumberFormat, { InputAttributes } from 'react-number-format';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
-import { Button, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material';
+import { Button, FormControlLabel, FormLabel, Input, Radio, RadioGroup } from '@mui/material';
 import styled from 'styled-components';
+import { Data } from '../intarface';
+import { InferGetStaticPropsType } from 'next';
 
 
 const Formula = styled.form`
   display: grid;
+  width: 600px;
+  margin: auto;
+  margin-top: 4em;
 `
 
 interface CustomProps {
@@ -43,13 +48,14 @@ const NumberFormatCustom = React.forwardRef<
 
 
 
-export default function FormattedInputs() {
+export default function FormattedInputs({ items, ChaveValor }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [values, setValues] = React.useState({
-    numberformat: '1320',
+    valorInicial: '1320',
     nome: '',
-    radio:''
+    cor: '',
+    chave:ChaveValor.keyRoom
   });
-    console.log(values)
+    console.log()
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValues({
@@ -59,23 +65,17 @@ export default function FormattedInputs() {
   };
 
   return (
-    <Box
-      sx={{
-        '& > :not(style)': {
-          m: 1,
-        },
-      }}
-    >
+    <Box>
       <Formula key="chave" onSubmit={event => {
         event.preventDefault()
-        alert(JSON.stringify(values))
+        alert(JSON.stringify(values, null, 2))
       }}>
          <FormControl variant="standard" >
         
         </FormControl>
         <TextField
           label="Valor inicial"
-          value={values.numberformat}
+          value={values.valorInicial}
           onChange={handleChange}
           name="numberformat"
           id="formatted-numberformat-input"
@@ -95,21 +95,42 @@ export default function FormattedInputs() {
       <RadioGroup
         aria-labelledby="demo-controlled-radio-buttons-group"
         name="controlled-radio-buttons-group"
-        value={values.radio}
+        value={values.cor}
         onChange={handleChange}
         >
-        
-        <FormControlLabel name="radio" value="female" control={<Radio  />} label="Female" />
-        <FormControlLabel name="radio" value="male" control={<Radio />} label="Male" />
+           <ul>
+            {items.cores.map((cor) => (
+              <>
+                {/* <li key={cor.identificador}>{cor.identificador}, {cor.identificadorHexadecimal} <input type="color" id="head" name="head"
+           value={cor.identificadorHexadecimal}></input></li> */}
+                 <FormControlLabel name="cor" value={cor.identificador} control={<Radio />} label={cor.identificador} />
+              </>
+              
+         ))}
+          </ul>
       </RadioGroup>
-  
+        <Input value={ChaveValor.keyRoom} name="chave"/>
         <Button type="submit" onClick={() => {
           console.log("fui")
           }} variant="outlined">enviar</Button>
       </Formula>
- 
-     
-       <pre>{JSON.stringify(values, null, 2)}</pre>
     </Box>
   );
 }
+type Chave = {
+      keyRoom: string;
+};
+
+export const getStaticProps = async () => {
+  const res = await fetch('https://ffgames134.herokuapp.com/api/cores');
+  const items: Data = await res.json();
+  const chave = await fetch('https://ffgames134.herokuapp.com/createRoom/');
+  
+  const ChaveValor:Chave = await chave.json()
+  return {
+    props: {
+      items,ChaveValor
+    },
+    revalidate: 10,
+  };
+};
