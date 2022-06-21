@@ -4,7 +4,6 @@ import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
 
-
 const Bloco = styled.main`
   
   display: grid;
@@ -28,27 +27,36 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Bloco>
+      <Bloco> 
         <h1 >
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
     
-        <Link href='form'>
+        <Link href='/form'>
           <a>teste do form</a>
         </Link>
-        <Link href="testeISR">
+        <Link href='/formi1'>
+          <a>teste do form1</a>
+        </Link>
+        <Link href='/form2'>
+          <a>teste do form2</a>
+        </Link>
+        <Link href='/form3'>
+          <a>teste do form3</a>
+        </Link>
+        <Link href="/testeISR">
           <a>Teste ISR</a>
         </Link>
-        <Link href="toggle">
+        <Link href="/toggle">
           <a>Teste toggle</a>
         </Link>
-        <Link href="testeReact">
+        <Link href="/testeReact">
           <a>Teste React</a>
         </Link>
-        <Link href="fonteIcon">
+        <Link href="/fonteIcon">
           <a>Font Awesome</a>
         </Link>
-        <Link href="money">
+        <Link href="/money">
           <a>tamo a falar de money</a>
         </Link>
         

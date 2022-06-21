@@ -1,56 +1,38 @@
-import React, {useState} from 'react';
-
-  
-  function App() {
-    const formik = useFormik({
-      initialValues: {
-        userEmail: 'email@email.com',
-        userPassword: '123456',
-      },
-    });
-  
-    return (
-      <form onSubmit={(event) => {
-        event.preventDefault();
-        console.log(formik.values);
-        alert('Olha o console!');
+import * as React from 'react';
+ import {
+   Formik,
+   FormikHelpers,
+   FormikProps,
+   Form,
+   Field,
+   FieldProps,
+ } from 'formik';
+ 
+ interface MyFormValues {
+  email: string;
+  password: string;
+ }
+ 
+export default function formi() {
+  const initialValues: MyFormValues = { email: '' , password : ''};
+  return (
+    <div>
+    <h1>My Example</h1>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={(values, actions) => {
+        console.log({ values, actions });
+        alert(JSON.stringify(values, null, 2));
+        actions.setSubmitting(false);
       }}
-      >
-        <div className="formField">
-          <label htmlFor="userEmail">
-            E-mail:
-          </label>
-          <input
-            type="text"
-            placeholder="email@example.com"
-            name="userEmail"
-            id="userEmail"
-            onChange={formik.handleChange}
-            value={formik.values.userEmail}
-          />
-          {/* <span class="formField__error">This field is required</span> */}
-        </div>
-  
-        <div className="formField">
-          <label htmlFor="userPassword">
-            Password:
-          </label>
-          <input
-            type="password"
-            placeholder="Your secret password"
-            name="userPassword"
-            id="userPassword"
-            onChange={formik.handleChange}
-            value={formik.values.userPassword}
-          />
-          {/* <span class="formField__error">This field is required</span> */}
-        </div>
-  
-        <button type="submit">
-          Login
-        </button>
-      </form>
-    );
-  }
-  
-  export default App;
+    >
+      <Form>
+        <label htmlFor="firstName">First Name</label>
+        <Field id="email" type="email" name="email" placeholder="email" />
+        <Field id="password"  type="password" name="password" placeholder="password" />
+        <button type="submit">Submit</button>
+      </Form>
+    </Formik>
+  </div>
+  )
+ }

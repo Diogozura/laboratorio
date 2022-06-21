@@ -1,5 +1,4 @@
-import { useRouter } from "next/router";
-import react from "react"
+
 function Blog({ posts }) {
   
     return (
@@ -10,7 +9,7 @@ function Blog({ posts }) {
           <li key={posts.namePlayer}> Nome do Jogador: {posts.namePlayer}</li>
           <li key={posts.idPlayer}> Id do Jogador: {posts.idPlayer}</li>
           <li key={posts.playerBank}>é Banco? {posts.playerBank}</li>
-          <li key={posts.saldo}>Saldo: {posts.saldo}</li> <button type="button" onClick={() => router.reload()}>atualizar</button>
+          <li key={posts.saldo}>Saldo: {posts.saldo}</li> 
       </ul>
     )
   }

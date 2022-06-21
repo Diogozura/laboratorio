@@ -1,37 +1,23 @@
-import React from "react";
-import NumberFormat from "react-number-format";
-import { useForm, Controller, ErrorMessage } from "react-hook-form";
+import * as React from 'react';
+import styled from 'styled-components';
 
-import ReactDOM from "react-dom";
+const Formulario = styled.div`
+  width: 600px;
+  margin: auto;
+  background-color: aqua;
+`
 
-
-
-export default function App() {
-  const { errors, control, setValue, handleSubmit } = useForm();
-
-  function handleChange() {
-    setValue("money", 20000)
-  }
-  return (
-    <form
-      onSubmit={handleSubmit(data => {
-        console.log(data);
-      })}
-    >
-      <div>
-        <Controller
-          name="money"
-          control={control}
-          as={<NumberFormat thousandSeparator={true} prefix={"$"} />}
-        />
-        <ErrorMessage errors={errors} name="money" as="p" />
-      </div>
-
-      <button onClick={handleChange}>set</button>
-
-      <input type="submit" />
-    </form>
-  );
+interface CustomProps {
+  onChange: (event: { target: { name: string; value: string } }) => void;
+  name: string;
 }
 
-
+export default function Formulariomy() {
+  return (
+    <Formulario>
+      <input type=''/>
+      <input />
+      <button></button>
+    </Formulario>
+  )
+}

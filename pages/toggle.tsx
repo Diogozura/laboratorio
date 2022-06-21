@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
 import styled from 'styled-components'
-import ToggleSwitch from '../src/components/ToggleSwitch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDoorClosed, faDoorOpen } from '@fortawesome/free-solid-svg-icons';
 
@@ -17,7 +16,7 @@ export default function Toggle() {
     return (
         <PageWrapper>
             <pre>{isChecked ?  <FontAwesomeIcon icon={faDoorClosed} className="fa-10x"/> :  <FontAwesomeIcon icon={faDoorOpen} className="fa-10x"/>}</pre>
-            <ToggleSwitch isChecked={isChecked}  onClick={handleCheck}/>  
+          
            
         </PageWrapper>
     )
