@@ -77,7 +77,7 @@ export default function FormattedInputs({ items, ChaveValor }: InferGetStaticPro
           label="Valor inicial"
           value={values.valorInicial}
           onChange={handleChange}
-          name="numberformat"
+          name="valorInicial"
           id="formatted-numberformat-input"
           InputProps={{
             inputComponent: NumberFormatCustom as any,
