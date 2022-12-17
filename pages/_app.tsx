@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   rel="stylesheet"
   href="https://fonts.googleapis.com/icon?family=Material+Icons"
       />
-      <title>Laboratório do zura </title>
+      <title>Laboratório do zura</title>
     </Head>
 
     <Component {...pageProps} />
